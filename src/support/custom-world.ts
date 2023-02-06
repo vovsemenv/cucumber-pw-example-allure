@@ -1,6 +1,7 @@
 import { setWorldConstructor, World, IWorldOptions } from '@cucumber/cucumber';
 import * as messages from '@cucumber/messages';
 import { BrowserContext, Page, PlaywrightTestOptions, APIRequestContext } from '@playwright/test';
+import { CucumberAllureWorld } from 'allure-cucumberjs';
 
 export interface CucumberWorldConstructorParams {
   parameters: { [key: string]: string };
@@ -20,7 +21,8 @@ export interface ICustomWorld extends World {
   playwrightOptions?: PlaywrightTestOptions;
 }
 
-export class CustomWorld extends World implements ICustomWorld {
+//@ts-expect-error
+export class CustomWorld extends CucumberAllureWorld implements ICustomWorld {
   constructor(options: IWorldOptions) {
     super(options);
   }
