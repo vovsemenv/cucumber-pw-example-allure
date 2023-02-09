@@ -21,5 +21,9 @@ const config = {
   publishQuiet: true,
 };
 
-config.format.push('./src/support/reporters/allure-reporter.ts');
+if (process.env.USE_ALLURE) {
+  config.format.push('./src/support/reporters/allure-reporter.ts');
+} else {
+  config.format.push('@cucumber/pretty-formatter');
+}
 export default config;
